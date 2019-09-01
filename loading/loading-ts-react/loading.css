@@ -1,0 +1,244 @@
+@import '../../stylesheets/variables';
+
+:root {
+  --loading-cubic: cubic-bezier(0.33, 0, 0.83, 1);
+  --loading-duration: 0.75s;
+  --cube-position-one: 3.4375rem;
+  --cube-position-two: 6.875rem;
+}
+
+.root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 10.5rem;
+  height: 14rem;
+  margin: auto;
+
+  @media (--phone-only) {
+    transform: scale(0.5);
+  }
+
+  @media (--tablet-portrait-up) {
+    transform: scale(0.7);
+  }
+
+  @media (--tablet-landscape-up) {
+    transform: scale(1);
+  }
+}
+
+.shadowContainer {
+  position: relative;
+  width: 10.5rem;
+  height: 7rem;
+  margin-top: -1.4375rem;
+  transform: rotate(45deg);
+
+  .shadow {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #c9d4d7;
+  }
+
+  .shadowOne {
+    top: 0;
+    left: 0;
+    animation: animationOne var(--loading-duration) infinite var(--loading-cubic);
+  }
+
+  .shadowTwo {
+    top: 0;
+    left: var(--cube-position-one);
+    animation: animationTwo var(--loading-duration) infinite var(--loading-cubic);
+  }
+
+  .shadowThree {
+    top: var(--cube-position-one);
+    left: var(--cube-position-one);
+    animation: animationThree var(--loading-duration) infinite var(--loading-cubic);
+  }
+
+  .shadowFour {
+    top: var(--cube-position-one);
+    left: var(--cube-position-two);
+    animation: animationFour var(--loading-duration) infinite var(--loading-cubic);
+  }
+}
+
+@keyframes animationOne {
+  0% {
+    top: 0;
+    left: 0;
+  }
+
+  50% {
+    top: 0;
+    left: var(--cube-position-one);
+  }
+
+  100% {
+    top: 0;
+    left: var(--cube-position-one);
+  }
+}
+
+@keyframes animationTwo {
+  0% {
+    top: 0;
+    left: var(--cube-position-one);
+  }
+
+  50% {
+    top: 0;
+    left: var(--cube-position-two);
+  }
+
+  100% {
+    top: var(--cube-position-one);
+    left: var(--cube-position-two);
+  }
+}
+
+@keyframes animationThree {
+  0% {
+    top: var(--cube-position-one);
+    left: var(--cube-position-one);
+  }
+
+  50% {
+    top: var(--cube-position-one);
+    left: 0;
+  }
+
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes animationFour {
+  0% {
+    top: var(--cube-position-one);
+    left: var(--cube-position-two);
+  }
+
+  50% {
+    top: var(--cube-position-one);
+    left: var(--cube-position-one);
+  }
+
+  100% {
+    top: var(--cube-position-one);
+    left: var(--cube-position-one);
+  }
+}
+
+@keyframes animationIndex {
+  0% {
+    position: relative;
+    z-index: 0;
+  }
+
+  50% {
+    position: relative;
+    z-index: 0;
+  }
+
+  100% {
+    position: relative;
+    z-index: 10000;
+  }
+}
+
+.cubeContainer {
+  position: relative;
+  top: -4.5625rem;
+  width: 11.875rem;
+  height: 8.375rem;
+  transform: rotate(45deg);
+
+  .cubeOne {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: animationOne var(--loading-duration) infinite var(--loading-cubic);
+  }
+
+  .cubeTwo {
+    position: absolute;
+    top: 0;
+    left: var(--cube-position-one);
+    animation: animationTwo var(--loading-duration) infinite var(--loading-cubic);
+
+    .left {
+      animation: animationIndex var(--loading-duration) infinite var(--loading-cubic);
+    }
+  }
+
+  .cubeThree {
+    position: absolute;
+    top: var(--cube-position-one);
+    left: var(--cube-position-one);
+    border-bottom-left-radius: 1px;
+    animation: animationThree var(--loading-duration) infinite var(--loading-cubic);
+  }
+
+  .cubeFour {
+    position: absolute;
+    top: var(--cube-position-one);
+    left: var(--cube-position-two);
+    animation: animationFour var(--loading-duration) infinite var(--loading-cubic);
+  }
+}
+
+.cube {
+  .top {
+    position: relative;
+    z-index: 10001;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #4ec8f8;
+    border-top-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+  }
+
+  .left {
+    width: 3.5rem;
+    height: 1.5625rem;
+    background: #29bee1;
+    transform: skew(45deg) rotate(180deg) translate(-0.8125rem);
+  }
+
+  .right {
+    width: 2.3125rem;
+    height: 2.4375rem;
+    background: #129cb1;
+    border-top-left-radius: 1px;
+    transform: translate(3.125rem, -3.75rem) rotate(45deg) skew(45deg);
+  }
+}
+
+.text {
+  width: 100%;
+  height: 2rem;
+  margin-top: 4rem;
+  font-size: 2rem;
+  text-align: center;
+  text-indent: 1.5rem;
+}

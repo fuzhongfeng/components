@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D网页filename加载</title>
+    <script src="./GeoGebra/deployggb.js"></script>
+  </head>
+  <body>
+    <div id="testId"></div>
+    <script>
+      var parameters = {
+        id: "testId",
+        filename:
+          "http://diy-courseware.aixuexi.com/o_1d8aoispmf4h18ts1o2b7co31sr.ggb", // filename 不能使用相对路径
+        width: "700",
+        height: "400"
+      };
+      var applet = new GGBApplet(parameters);
+      applet.setHTML5Codebase("./GeoGebra/HTML5/5.0/web3d", true);
+      window.onload = function() {
+        applet.inject("testId", "html5");
+      };
+    </script>
+  </body>
+</html>
